@@ -20,7 +20,7 @@ public class Ques_5 {
 				
 				DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 				
-				DocumentBuilder db = dbf.newDocumentBuilder();
+				DocumentBuilder db = dbf.newDocumentBuilder();	
 				Document doc = db.parse(files[k]);
 				
 				doc.getDocumentElement().normalize();
