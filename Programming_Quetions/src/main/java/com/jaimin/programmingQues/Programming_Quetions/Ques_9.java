@@ -2,7 +2,9 @@ package com.jaimin.programmingQues.Programming_Quetions;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -64,6 +66,42 @@ public class Ques_9 {
 		System.out.println("Extra-count: " + Extra.size());
 	}
 	
+	public static void notFoundEqual(File[] f1, File[] f2) {
+		Set<String> fileNotEqual = new HashSet<>();
+		boolean isEqual = false;
+		
+		for(File file1: f1) {
+			for(File file2: f2) {
+				if(file1.getName().equals(file2.getName())) {
+					isEqual = true;
+				}
+			}
+			
+			if(isEqual == false) {
+				fileNotEqual.add(file1.getName());
+			}
+		}
+		
+		isEqual = false;
+		
+		for(File file2: f2) {
+			for(File file1: f1) {
+				if(file2.getName().equals(file1.getName())) {
+					isEqual = true;
+				}
+			}
+			
+			if(isEqual == false) {
+				fileNotEqual.add(file2.getName());
+			}
+		}
+		
+		System.out.println("These files' names are not equal. \n");
+		for(String fileName: fileNotEqual) {
+			System.out.println(fileName);
+		}
+	}
+	
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 
 		File[] files1 = new File("/home/jaiminrana/Downloads/Problem_Input/9/CM1").listFiles();
@@ -73,6 +111,7 @@ public class Ques_9 {
 
 		for (File f1 : files1) {
 			for (File f2 : files2) {
+				
 				if (f1.getName().equals(f2.getName())) {
 					System.out.println("File-Name:  " + f1.getName()+"\n");
 					
@@ -84,10 +123,12 @@ public class Ques_9 {
 					extractExtra(list1,list2);
 					System.out.println();
 					System.out.println();
-				}
+				}				
 			}
 		}
-
+		
+		notFoundEqual(files1,files2);
+		
 	}
 
 }
